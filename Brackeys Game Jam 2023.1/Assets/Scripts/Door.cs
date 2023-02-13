@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour
 {
     [SerializeField] private DoorMode doorMode;
+    [SerializeField] private int neededGems;
+    private bool _goalReached;
     private enum DoorMode
     {
         Teleport,
@@ -19,35 +21,33 @@ public class Door : MonoBehaviour
     
     [Header("ChangeScene")]
     [SerializeField] private string nextScene;
-    [SerializeField] private Animator transition;
+
+    private void Awake()
+    {
+        PlayerController.OnCollectGem += OnCollectGem;
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        if (col.CompareTag("Player") && _goalReached)
         {
-            transition.SetBool("ChangeScene", true);
             if (doorMode == DoorMode.ChangeScene)
             {
-                StartCoroutine(LoadScene());
+                GameManager.Instance.LoadScene(nextScene);
             }
             else
             {
-                StartCoroutine(Teleport(col.transform));
+                GameManager.Instance.SetCurrentCheckPoint(newPosition);
+                GameManager.Instance.Teleport(col.transform);
             }
         
         }
     }
 
-    private IEnumerator LoadScene()
+    private void OnCollectGem()
     {
-        yield return new WaitForSeconds(0.6f);
-        SceneManager.LoadSceneAsync(nextScene);
-        yield return null;
+        if (GemManager.Instance.gemCount >= neededGems) _goalReached = true;
     }
-    
-    private IEnumerator Teleport(Transform colTransform)
-    {
-        yield return new WaitForSeconds(0.6f);
-        colTransform.position = newPosition.position;
-        transition.SetBool("ChangeScene", false);
-    }
+
+   
 }
