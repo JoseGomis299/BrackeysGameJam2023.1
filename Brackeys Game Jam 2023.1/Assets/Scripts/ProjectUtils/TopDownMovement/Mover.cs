@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using ProjectUtils.Attacking;
 using ProjectUtils.ObjectPooling;
 using UnityEngine;
@@ -13,6 +15,7 @@ namespace ProjectUtils.TopDown2D
         [SerializeField] private LayerMask collisionLayer;
         private RaycastHit2D _hit;
         [SerializeField] public bool canDash = true;
+        [SerializeField] public bool _canDash = true;
         [SerializeField] private float dashForce = 35;
         [SerializeField] private float dashDuration= 0.5f;
         private Vector3 _dashDirection;
@@ -20,7 +23,9 @@ namespace ProjectUtils.TopDown2D
         private Color moverColor;
         protected float lastDashTime;
         private Rigidbody2D _rb;
-
+        [SerializeField] private bool slidesOnIce;
+        [SerializeField] private float iceSpeed;
+        private Vector3 _iceDirection;
 
 
         private CapsuleCollider2D _capsuleCollider;
@@ -30,7 +35,8 @@ namespace ProjectUtils.TopDown2D
         public enum MovementState
         {
             walking,
-            dashing
+            dashing,
+            onIce
         }
         protected virtual void Start()
         {
@@ -51,10 +57,13 @@ namespace ProjectUtils.TopDown2D
             {
                 state = MovementState.walking;
             }
-      
+
+            input = IceMovement(input);
             Move(input);
         }
-        
+
+
+
         private void Move(Vector3 input)
         {
             _moveDelta = new Vector3(input.x * xSpeed, input.y * ySpeed, 0);
@@ -84,7 +93,7 @@ namespace ProjectUtils.TopDown2D
         }
         protected void Dash(Vector3 direction)
         {
-            if(!canDash) return;
+            if(!canDash||!_canDash) return;
             
             _dashDirection = dashForce*direction;
             state = MovementState.dashing;
@@ -92,7 +101,6 @@ namespace ProjectUtils.TopDown2D
         }
         private void DoDash()
         {
-            
             _rb.MovePosition(transform.position + _dashDirection*Time.fixedDeltaTime);
 
             if (dashEcho != null)
@@ -103,6 +111,58 @@ namespace ProjectUtils.TopDown2D
                 var echoRenderer = echo.GetComponent<SpriteRenderer>();
                 echoRenderer.sprite = fighterGFX.GetComponent<SpriteRenderer>().sprite;
                 echoRenderer.color = new Color(moverColor.r, moverColor.g, moverColor.b, 0.5f);
+            }
+        }
+
+        private Vector3 IceMovement(Vector3 input)
+        {
+            if (slidesOnIce && state == MovementState.onIce)
+            {
+                _canDash = false;
+                if (_iceDirection.magnitude <= 0.1f)
+                {
+                    if (input.x != 0 && input.y != 0) input.x = 0;
+                    _iceDirection = input * iceSpeed;
+                }
+                else
+                {
+                    input = _iceDirection;
+                }
+
+                if (Physics2D.CapsuleCast(transform.position, _capsuleCollider.size, _capsuleCollider.direction, 0,
+                        _iceDirection.normalized, 0.1f, collisionLayer))
+                {
+                    _iceDirection = Vector3.zero;
+                }
+            }
+
+            return input;
+        }
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.CompareTag("Ice"))
+            {
+                state = MovementState.onIce;
+            }
+        }
+        
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            var list = new List<Collider2D>();
+            _capsuleCollider.OverlapCollider(new ContactFilter2D().NoFilter(), list);
+            foreach (var col in list)
+            {
+                Debug.Log(col.name);
+                if (col.CompareTag("Ice"))
+                {
+                    return;
+                }
+            } 
+            if (other.CompareTag("Ice"))
+            {
+                state = MovementState.walking;
+                _iceDirection = Vector3.zero;
+                _canDash = canDash;
             }
         }
     }
