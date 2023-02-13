@@ -14,6 +14,11 @@ public class GemBag : MonoBehaviour
    {
       this.gemsNumber = gemsNumber;
    }
+   
+   public int GetGems()
+   {
+      return gemsNumber;
+   }
    private void FixedUpdate()
    {
       if (target != null)
@@ -25,7 +30,9 @@ public class GemBag : MonoBehaviour
          if (Vector3.Distance(transform.position, target.position) <= 1)
          {
             GemManager.Instance.gemCount += gemsNumber;
+            gemsNumber = 0;
             target = null;
+            GemsCountUI.Instance.OnCollectGem();
             gameObject.SetActive(false);
          }
       }

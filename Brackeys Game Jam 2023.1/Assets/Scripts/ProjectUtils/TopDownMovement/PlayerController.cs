@@ -46,11 +46,15 @@ using UnityEngine;
 
         protected override void Death()
         {
-            gemBag.GetComponent<GemBag>().SetGems(GemManager.Instance.gemCount);
-            GemManager.Instance.gemCount = 0;
-            gemBag.transform.position = transform.position;
-            capsuleCollider.enabled = false;
-            gemBag.SetActive(true);
+            if (!gemBag.activeInHierarchy)
+            {
+                gemBag.GetComponent<GemBag>().SetGems(GemManager.Instance.gemCount);
+                GemManager.Instance.gemCount = 0;
+                gemBag.transform.position = transform.position;
+                capsuleCollider.enabled = false;
+                gemBag.SetActive(true);
+                OnCollectGem?.Invoke();
+            }
 
             GameManager.Instance.Teleport(transform);
             Invoke(nameof(RestoreHealth), 0.7f);
