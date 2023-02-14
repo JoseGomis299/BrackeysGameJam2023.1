@@ -102,7 +102,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3388980377069968380}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -110,7 +110,7 @@ RectTransform:
   - {fileID: 9053778797411438131}
   m_Father: {fileID: 6203080208651028406}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -135,7 +135,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 32767
   m_TargetDisplay: 0
 --- !u!114 &5982258829752516939
 MonoBehaviour:
@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 2816224461914611790}
   - component: {fileID: 4136305493571970162}
   - component: {fileID: 3495951373909068151}
+  - component: {fileID: 5714411417292762551}
   m_Layer: 0
   m_Name: EnemyRed
   m_TagString: Enemy
@@ -243,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 6
   extraRadius: 9.5
-  angle: 50
+  angle: 45
   targetLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -281,7 +282,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.9, y: 0.9}
+  m_Size: {x: 0.7, y: 0.7}
   m_Direction: 0
 --- !u!212 &3495951373909068151
 SpriteRenderer:
@@ -335,6 +336,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5714411417292762551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6203080208651028400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec798be3b61559b49a06eb0463f711dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6203080210073635238
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +400,7 @@ MonoBehaviour:
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
-  color: {r: 0.67058825, g: 0.18431371, b: 0.18922155, a: 1}
+  color: {r: 0.735849, g: 0.14145909, b: 0.14145909, a: 1}
   size: 9.5
   spotAngleInner: 360
   spotAngleOuter: 360
@@ -428,7 +441,7 @@ MonoBehaviour:
     - {x: -0.50000006, y: 0.8660254}
     - {x: -0.4999999, y: -0.86602545}
   drawingEnabled: 1
-  drawingTranslucencyEnabled: 0
+  drawingTranslucencyEnabled: 1
 --- !u!114 &6203080210073635259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,7 +461,7 @@ MonoBehaviour:
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
-  color: {r: 0.42352942, g: 0.12941177, b: 0.12941177, a: 0.648}
+  color: {r: 0.7379107, g: 0.14126332, b: 0.14126332, a: 0.648}
   size: 2
   spotAngleInner: 360
   spotAngleOuter: 360

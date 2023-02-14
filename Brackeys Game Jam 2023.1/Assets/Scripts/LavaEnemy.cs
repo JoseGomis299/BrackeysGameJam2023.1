@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FunkyCode;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -60,8 +61,12 @@ public class LavaEnemy : MonoBehaviour, Iinteractable
             _canvas.SetActive(true);
             throweable = true;
         }
+        else
+        {
+            _canvas.SetActive(false);
+            throweable = false;
+        }
     }
-
     public void Interact()
     {
         if (throweable)
@@ -69,7 +74,6 @@ public class LavaEnemy : MonoBehaviour, Iinteractable
             BeThrown();
         }
     }
-
     private void BeThrown()
     {
         if (gem != null)
@@ -80,15 +84,16 @@ public class LavaEnemy : MonoBehaviour, Iinteractable
         _canvas.SetActive(false);
         throweable = false;
         _thrown = true;
-        transform.localRotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg);
-        transform.position += direction * 1.5f;
-    }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.transform.CompareTag("Lava"))
-        {
-            Debug.Log("VAR");
-        }
+        var FOV = GetComponent<EnemyFieldOfView>();
+        if (FOV != null) FOV.enabled = false;
+        var TF = GetComponent<TrailFollower>();
+        if (TF != null) TF.enabled = false;
+        _capsuleCollider.enabled = false;
+        transform.GetChild(0).gameObject.SetActive(false);
+        
+        transform.localRotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg);
+        Debug.Log(direction);
+        transform.position += direction * 1.5f;
     }
 }

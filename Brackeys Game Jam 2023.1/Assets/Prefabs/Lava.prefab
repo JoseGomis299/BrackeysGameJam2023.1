@@ -104,7 +104,7 @@ MonoBehaviour:
   occlusionLayer: 0
   translucentLayer: 2
   translucentPresetId: 0
-  color: {r: 1, g: 0.5318619, b: 0.5318619, a: 0.166}
+  color: {r: 0.9716981, g: 0.8685862, b: 0.69098157, a: 0.06}
   size: 5
   spotAngleInner: 360
   spotAngleOuter: 360
@@ -144,5 +144,5 @@ MonoBehaviour:
     - {x: 1, y: 0}
     - {x: -0.50000006, y: 0.8660254}
     - {x: -0.4999999, y: -0.86602545}
-  drawingEnabled: 0
-  drawingTranslucencyEnabled: 0
+  drawingEnabled: 1
+  drawingTranslucencyEnabled: 1

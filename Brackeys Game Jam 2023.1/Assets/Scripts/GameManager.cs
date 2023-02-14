@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     
     [SerializeField] private Animator transition;
-
+    
     private void Awake()
     {
         Instance = this;

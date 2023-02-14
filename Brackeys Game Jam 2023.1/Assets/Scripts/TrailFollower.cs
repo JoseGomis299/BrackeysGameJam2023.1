@@ -28,6 +28,7 @@ public class TrailFollower : MonoBehaviour
 
   private void FixedUpdate()
   {
+    if(trailPoints.Length <= 0)return;
     Vector3 targetPos = trailPoints[currentPoint].transform.position;
     float distance = Vector3.Distance(targetPos, transform.position);
 

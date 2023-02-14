@@ -56,7 +56,7 @@ using UnityEngine;
 
         protected override void Death()
         {
-            if (!gemBag.activeInHierarchy)
+            if (!gemBag.activeInHierarchy && GemManager.Instance.gemCount > 0)
             {
                 gemBag.GetComponent<GemBag>().SetGems(GemManager.Instance.gemCount);
                 GemManager.Instance.gemCount = 0;
