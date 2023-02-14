@@ -12,6 +12,7 @@ public class TrailFollower : MonoBehaviour
   private Vector3 direction;
 
   private int targetAngle;
+  
 
   private void Start()
   {

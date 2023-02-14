@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6203080208651028404}
   - component: {fileID: 4136305493571970162}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyBlue
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6203080208651028400}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.0106516, y: -0.3871045, z: 0.5607557}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -100,9 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5881f82a29732b449e62107edcdf337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trailPoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  trailPoints: []
   speed: 3
 --- !u!114 &6203080208651028404
 MonoBehaviour:
@@ -166,7 +164,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6203080210073635238}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7009093, w: -0.7132504}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -37,6 +37,16 @@ using UnityEngine;
                 _lastDashTime = Time.time;
                 Dash(_dashDirection);
             }
+            
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                var overlap = Physics2D.OverlapCircleAll(transform.position, 3);
+                foreach (var collider in overlap)
+                {
+                    var interactable = collider.GetComponent<Iinteractable>();
+                    if(interactable != null) interactable.Interact();
+                }
+            }
 
         }
         private void FixedUpdate()

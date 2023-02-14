@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8114003439450940904}
   - component: {fileID: 8114003439450940901}
   m_Layer: 0
-  m_Name: Gem
+  m_Name: GemRed
   m_TagString: Gem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  m_Color: {r: 0.06680605, g: 0, b: 0.6226415, a: 1}
+  m_Color: {r: 0.8584906, g: 0.07963323, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   occlusionLayer: 1
   translucentLayer: 2
   translucentPresetId: 0
-  color: {r: 0.005181517, g: 0, b: 0.3467041, a: 1}
+  color: {r: 0.34509805, g: 0.0033074352, b: 0, a: 1}
   size: 2
   spotAngleInner: 360
   spotAngleOuter: 360

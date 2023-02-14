@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8228236131907294725}
   - component: {fileID: -4232894805753739300}
   m_Layer: 0
-  m_Name: GemBag
+  m_Name: GemBagRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.014052518, g: 0, b: 0.8584906, a: 1}
+  m_Color: {r: 0.8588236, g: 0.078431375, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   occlusionLayer: 1
   translucentLayer: 2
   translucentPresetId: 0
-  color: {r: 0.005181517, g: 0, b: 0.3467041, a: 1}
+  color: {r: 0.34509805, g: 0.0032423153, b: 0, a: 1}
   size: 3
   spotAngleInner: 360
   spotAngleOuter: 360
