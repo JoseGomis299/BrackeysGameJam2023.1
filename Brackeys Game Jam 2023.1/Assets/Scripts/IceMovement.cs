@@ -28,8 +28,8 @@ public class IceMovement : MonoBehaviour
             {
                 input = _iceDirection;
             }
-   
-            if (Physics2D.CapsuleCast(transform.position, _mover.GetCapsuleCollider2D().size*transform.localScale, _mover.GetCapsuleCollider2D().direction, 0,
+
+            if (Physics2D.CapsuleCast(new Vector3(transform.position.x+_mover.GetCapsuleCollider2D().offset.x, transform.position.y+_mover.GetCapsuleCollider2D().offset.y, 0), _mover.GetCapsuleCollider2D().size*transform.localScale, _mover.GetCapsuleCollider2D().direction, 0,
                     _iceDirection.normalized, 0.1f, _mover.collisionLayer))
             {
                 _iceDirection = Vector3.zero;

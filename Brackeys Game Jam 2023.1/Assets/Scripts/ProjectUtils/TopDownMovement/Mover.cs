@@ -44,6 +44,7 @@ namespace ProjectUtils.TopDown2D
 
         protected void UpdateMotor(Vector3 input)
         {
+            if(health <= 0) return;
             if (Time.time - lastDashTime <= dashDuration)
             {
                 DoDash();
@@ -70,16 +71,14 @@ namespace ProjectUtils.TopDown2D
             {
                 fighterGFX.transform.localScale = new Vector3(1, 1, 1);
             }
-            else if (_moveDelta.y > 0)
-            {
-                fighterGFX.transform.localScale = new Vector3(1, 1, 1);
-                //change sprite to walking upwards
-            }
-            else if (_moveDelta.y < 0)
-            {
-                fighterGFX.transform.localScale = new Vector3(1, 1, 1);
-                //change sprite to walking downards
-            }
+            // else if (_moveDelta.y > 0)
+            // {
+            //     //change sprite to walking upwards
+            // }
+            // else if (_moveDelta.y < 0)
+            // {
+            //     //change sprite to walking downards
+            // }
             
             //Move position
             _rb.MovePosition(transform.position + _moveDelta * Time.fixedDeltaTime);

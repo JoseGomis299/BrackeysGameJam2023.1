@@ -22,11 +22,13 @@ public class LavaEnemy : MonoBehaviour, Iinteractable
     private RaycastHit2D downHit;
 
     private Vector3 direction;
+    private Color _color;
     private void Awake()
     {
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
         _canvas = transform.GetChild(2).gameObject;
         player = GameObject.FindWithTag("Player").transform;
+        _color = GetComponentInChildren<SpriteRenderer>().color;
     }
 
     private void Update()
@@ -36,6 +38,8 @@ public class LavaEnemy : MonoBehaviour, Iinteractable
             _canvas.SetActive(false);
             throweable = false;
             transform.localScale -= Vector3.one*Time.deltaTime;
+            _color.a -= Time.deltaTime;
+            GetComponentInChildren<SpriteRenderer>().color = _color;
             if(transform.localScale.x <= 0) gameObject.SetActive(false);
             return;
         }
