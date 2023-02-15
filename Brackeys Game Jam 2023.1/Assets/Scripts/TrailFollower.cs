@@ -1,21 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ProjectUtils.TopDown2D;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class TrailFollower : MonoBehaviour
+public class TrailFollower : Mover
 {
   public TrailPoint[] trailPoints;
-  [SerializeField] private float speed;
   public int currentPoint { get; private set; }
   private Vector3 direction;
 
-  private int targetAngle;
-  
-
+  private float targetAngle;
   private void Start()
   {
+    base.Start();
+    
+    if(trailPoints.Length <= 0) return;
+    
     currentPoint = 0;
     trailPoints[currentPoint].gameObject.SetActive(true);
     direction = (trailPoints[currentPoint].transform.position - transform.position).normalized;
@@ -32,13 +34,12 @@ public class TrailFollower : MonoBehaviour
     Vector3 targetPos = trailPoints[currentPoint].transform.position;
     float distance = Vector3.Distance(targetPos, transform.position);
 
-    float temp = Mathf.Lerp(transform.localRotation.eulerAngles.z, targetAngle, Time.fixedDeltaTime * 5);
+    float temp = Mathf.Lerp(transform.localRotation.eulerAngles.z, targetAngle, Time.fixedDeltaTime * 10);
     transform.localRotation = Quaternion.Euler(0f, 0f, temp);
     
     if (distance >= 0.05f)
     {
-      Vector3 pos = transform.position + direction * (speed * Time.fixedDeltaTime);
-      transform.position = pos;
+      UpdateMotor(direction);
     }
     else if(!trailPoints[currentPoint].startCount)
     {
@@ -62,11 +63,6 @@ public class TrailFollower : MonoBehaviour
       targetAngle += 360;
     }
   }
-
-
-  public float getSpeed()
-  {
-    return speed;
-  }
+  
 }
 

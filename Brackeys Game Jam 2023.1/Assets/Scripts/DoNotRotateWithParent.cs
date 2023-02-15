@@ -5,17 +5,23 @@ using UnityEngine;
 
 public class DoNotRotateWithParent : MonoBehaviour
 {
-    private float offset;
-    private Transform child;
+    private float[] offsets;
+    [SerializeField] private Transform[] children;
 
     private void Awake()
     {
-        child = transform.GetChild(1);
-        offset = child.transform.localRotation.eulerAngles.z;
+        offsets = new float[children.Length];
+        for (int i = 0; i < children.Length; i++)
+        {
+            offsets[i] = children[i].transform.localRotation.eulerAngles.z;
+        }
     }
 
     void LateUpdate()
     {
-        child.transform.localRotation = Quaternion.Euler(0,0,offset-transform.localRotation.eulerAngles.z);
+        for (int i = 0; i < children.Length; i++)
+        {
+            children[i].transform.localRotation = Quaternion.Euler(0,0,offsets[i]-transform.localRotation.eulerAngles.z);
+        }
     }
 }

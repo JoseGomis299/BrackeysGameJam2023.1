@@ -25,7 +25,7 @@ public class LavaEnemy : MonoBehaviour, Iinteractable
     private void Awake()
     {
         _capsuleCollider = GetComponent<CapsuleCollider2D>();
-        _canvas = transform.GetChild(1).gameObject;
+        _canvas = transform.GetChild(2).gameObject;
         player = GameObject.FindWithTag("Player").transform;
     }
 
@@ -90,7 +90,7 @@ public class LavaEnemy : MonoBehaviour, Iinteractable
         var TF = GetComponent<TrailFollower>();
         if (TF != null) TF.enabled = false;
         _capsuleCollider.enabled = false;
-        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(false);
         
         transform.localRotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg);
         Debug.Log(direction);

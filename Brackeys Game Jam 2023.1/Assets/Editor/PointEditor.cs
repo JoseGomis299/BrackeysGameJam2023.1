@@ -18,11 +18,11 @@ public class PointEditor : Editor
       
       for (int i = currentPoint; i < points.Length-1; i++)
       {
-         if(points[i]!=null) Handles.DrawLine(points[i].transform.position, points[i+1].transform.position);
+         if(points.Length > 0 && points[i]!=null) Handles.DrawLine(points[i].transform.position, points[i+1].transform.position);
       }
       
       Handles.color = Color.blue;
-      if(points[currentPoint]!=null) Handles.DrawLine(trailFollower.transform.position, points[currentPoint].transform.position);
+      if(points.Length > 0) Handles.DrawLine(trailFollower.transform.position, points[currentPoint].transform.position);
 
    }
 }

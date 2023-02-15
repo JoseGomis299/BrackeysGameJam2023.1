@@ -67,9 +67,7 @@ namespace ProjectUtils.TopDown2D
 
         protected void RestoreHealth()
         {
-            Debug.Log("a");
             health = maxHealth;
-            Debug.Log(health);
             fighterGFXRenderer.color = new Color(fighterColor.r, fighterColor.g, fighterColor.b, 1);
             if (transform.CompareTag("Player")) _playerLight.color.a = _playerLightAlpha;
             capsuleCollider.enabled = true;
