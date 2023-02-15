@@ -10,6 +10,8 @@ public class Door : MonoBehaviour
     [SerializeField] private DoorMode doorMode;
     [SerializeField] private int neededGems;
     private bool _goalReached;
+
+    public static event Action<int, int> OnChangeRoom; 
     private enum DoorMode
     {
         Teleport,
@@ -18,7 +20,9 @@ public class Door : MonoBehaviour
 
     [Header("Teleport")] 
     [SerializeField] private Transform newPosition;
-    
+    [SerializeField] private int currentRoomIndex;
+    [SerializeField] private int nextRoomIndex;
+
     [Header("ChangeScene")]
     [SerializeField] private string nextScene;
 
@@ -39,11 +43,17 @@ public class Door : MonoBehaviour
             {
                 GameManager.Instance.SetCurrentCheckPoint(newPosition);
                 GameManager.Instance.Teleport(col.transform);
+                StartCoroutine(ChangeRoom());
             }
         
         }
     }
 
+    private IEnumerator ChangeRoom()
+    {
+        yield return new WaitForSeconds(0.5f);
+        OnChangeRoom?.Invoke(currentRoomIndex, nextRoomIndex);
+    }
     private void OnCollectGem()
     {
         if (GemManager.Instance.gemCount >= neededGems) _goalReached = true;

@@ -50,7 +50,10 @@ public class TrailFollower : MonoBehaviour
 
     trailPoints[currentPoint].canNext = false;
     trailPoints[currentPoint].startCount = false;
+    trailPoints[currentPoint].gameObject.SetActive(false);
+
     currentPoint = ++currentPoint % trailPoints.Length;
+    trailPoints[currentPoint].gameObject.SetActive(true);
     targetPos = trailPoints[currentPoint].transform.position;
     direction = (targetPos - transform.position).normalized;
     targetAngle = (int) (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);

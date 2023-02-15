@@ -15,6 +15,7 @@ public class TrailPoint : MonoBehaviour
 
     private void Awake()
     {
+        gameObject.SetActive(false);
         canNext = false; 
         startCount = false;
     }

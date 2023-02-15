@@ -228,7 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5881f82a29732b449e62107edcdf337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trailPoints: []
+  trailPoints:
+  - {fileID: 0}
   speed: 3
 --- !u!114 &6203080208651028404
 MonoBehaviour:
@@ -242,8 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69acc50ebd4972742a094941d94941da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 6
-  extraRadius: 9.5
+  radius: 5
+  extraRadius: 8
   angle: 45
   targetLayer:
     serializedVersion: 2
