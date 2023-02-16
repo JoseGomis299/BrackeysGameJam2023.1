@@ -1845,6 +1845,7 @@ TextureImporter:
       tiles_hielito_71: 279893058
       tiles_hielito_30: -2118689025
       tiles_hielito_20: -861430604
+      tiles_hielito_13: -1442944683
       tiles_hielito_57: -543418628
       tiles_hielito_58: -1679596154
       tiles_hielito_12: -895875786
@@ -1852,7 +1853,6 @@ TextureImporter:
       tiles_hielito_33: 717950169
       tiles_hielito_54: -389784420
       tiles_hielito_72: -567864731
-      tiles_hielito_74: 1764176385
       tiles_hielito_36: 19452900
       tiles_hielito_65: -2119972768
       tiles_hielito_51: -899351139
@@ -1914,8 +1914,8 @@ TextureImporter:
       tiles_hielito_61: 113073087
       tiles_hielito_73: -701055027
       tiles_hielito_43: -86751847
-      tiles_hielito_13: -1442944683
       tiles_hielito_44: -1548922694
+      tiles_hielito_74: 1764176385
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

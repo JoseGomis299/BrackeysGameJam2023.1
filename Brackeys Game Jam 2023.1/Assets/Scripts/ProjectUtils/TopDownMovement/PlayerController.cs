@@ -5,7 +5,7 @@ using ProjectUtils.TopDown2D;
 using UnityEngine;
     public class PlayerController : Mover
     {
-        private Vector3 _direction;
+        public Vector3 direction { get; private set; }
         private Vector3 _lastValidDirection;
 
         [SerializeField] private float dashCoolDown;
@@ -27,9 +27,9 @@ using UnityEngine;
         {
             float x = Input.GetAxisRaw("Horizontal");
             float y = Input.GetAxisRaw("Vertical");
-            _direction = new Vector3(x, y, 0);
-            if (_direction != Vector3.zero) _lastValidDirection = _direction;
-            if (_direction.magnitude is <= 1 and > 0) _dashDirection = _direction;
+            direction = new Vector3(x, y, 0);
+            if (direction != Vector3.zero) _lastValidDirection = direction;
+            if (direction.magnitude is <= 1 and > 0) _dashDirection = direction;
 
 
             if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time - _lastDashTime >= dashCoolDown)
@@ -51,7 +51,7 @@ using UnityEngine;
         }
         private void FixedUpdate()
         {
-            UpdateMotor(_direction);
+            UpdateMotor(direction);
         }
 
         protected override void Death()
