@@ -35,7 +35,7 @@ public class TrailFollower : Mover
     float distance = Vector3.Distance(targetPos, transform.position);
 
     float temp = Mathf.Lerp(transform.localRotation.eulerAngles.z, targetAngle, Time.fixedDeltaTime * 10);
-    transform.localRotation = Quaternion.Euler(0f, 0f, temp);
+    transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.x, temp);
     
     if (distance >= 0.05f)
     {

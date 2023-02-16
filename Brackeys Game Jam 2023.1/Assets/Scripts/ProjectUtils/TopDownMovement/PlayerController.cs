@@ -80,7 +80,10 @@ using UnityEngine;
             {
                 GemManager.Instance.gemCount++;
                 OnCollectGem?.Invoke();
-                other.gameObject.SetActive(false);
+                other.GetComponentInChildren<ParticleSystem>().Play();
+                other.GetComponent<SpriteRenderer>().enabled = false;
+                other.GetComponent<CapsuleCollider2D>().enabled = false;
+                other.GetComponent<Light2D>().enabled = false;
             }
         }
     }

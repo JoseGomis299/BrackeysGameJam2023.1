@@ -21,7 +21,7 @@ public class DoNotRotateWithParent : MonoBehaviour
     {
         for (int i = 0; i < children.Length; i++)
         {
-            children[i].transform.localRotation = Quaternion.Euler(0,0,offsets[i]-transform.localRotation.eulerAngles.z);
+            children[i].transform.localRotation = Quaternion.Euler(children[i].transform.localRotation.eulerAngles.x,children[i].transform.localRotation.eulerAngles.y,offsets[i]-transform.localRotation.eulerAngles.z);
         }
     }
 }

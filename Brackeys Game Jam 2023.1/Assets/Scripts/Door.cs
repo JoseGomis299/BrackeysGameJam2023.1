@@ -49,6 +49,11 @@ public class Door : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        if (_goalReached && transform.GetChild(1).gameObject.activeInHierarchy) transform.GetChild(1).gameObject.SetActive(false);
+    }
+
     private IEnumerator ChangeRoom()
     {
         yield return new WaitForSeconds(0.5f);
@@ -56,7 +61,12 @@ public class Door : MonoBehaviour
     }
     private void OnCollectGem()
     {
-        if (GemManager.Instance.gemCount >= neededGems) _goalReached = true;
+        if (!_goalReached && GemManager.Instance.gemCount >= neededGems)
+        {
+            _goalReached = true;
+            GetComponentInChildren<ParticleSystem>().Stop();
+            Debug.Log(transform.name);
+        }
     }
 
    

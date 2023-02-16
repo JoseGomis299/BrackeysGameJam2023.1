@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5984659085870944048}
+  - component: {fileID: 7574532577080664443}
   m_Layer: 5
   m_Name: Colors
   m_TagString: Untagged
@@ -39,6 +40,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7574532577080664443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4721162504531220197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc1f97fc2a515544899efe58130ede4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7658897817796014632
 GameObject:
   m_ObjectHideFlags: 0
@@ -50,6 +63,7 @@ GameObject:
   - component: {fileID: 7658897817796014633}
   - component: {fileID: 7658897817796014635}
   - component: {fileID: 7658897817796014634}
+  - component: {fileID: 1213022481}
   m_Layer: 5
   m_Name: BolaAmarilla
   m_TagString: Untagged
@@ -115,6 +129,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &1213022481
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7658897817796014632}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d397075ac3bfc134c995ded2d925113a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7658897818744228078
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,6 +160,7 @@ GameObject:
   - component: {fileID: 7658897818744228079}
   - component: {fileID: 7658897818744228065}
   - component: {fileID: 7658897818744228064}
+  - component: {fileID: 1535935461}
   m_Layer: 5
   m_Name: BolaRoja
   m_TagString: Untagged
@@ -191,6 +226,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &1535935461
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7658897818744228078}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 332bb68985b57eb48968358be093b5ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7658897819368820172
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +257,7 @@ GameObject:
   - component: {fileID: 7658897819368820173}
   - component: {fileID: 7658897819368820175}
   - component: {fileID: 7658897819368820174}
+  - component: {fileID: 1851382436}
   m_Layer: 5
   m_Name: BolaAzul
   m_TagString: Untagged
@@ -267,3 +323,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &1851382436
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7658897819368820172}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7493ce4a1a842c84ba175e2fa9de8855, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
