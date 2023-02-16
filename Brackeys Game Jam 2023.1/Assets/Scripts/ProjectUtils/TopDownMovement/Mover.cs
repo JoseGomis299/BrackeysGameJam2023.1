@@ -115,6 +115,5 @@ namespace ProjectUtils.TopDown2D
         {
             return capsuleCollider;
         }
-      
     }
 }
