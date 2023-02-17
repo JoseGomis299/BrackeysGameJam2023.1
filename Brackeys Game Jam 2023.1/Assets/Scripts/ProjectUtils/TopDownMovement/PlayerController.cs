@@ -1,6 +1,7 @@
 using System;
 using FunkyCode;
 using ProjectUtils.Attacking;
+using ProjectUtils.ObjectPooling;
 using ProjectUtils.TopDown2D;
 using UnityEngine;
     public class PlayerController : Mover
@@ -14,8 +15,7 @@ using UnityEngine;
 
         [SerializeField] private GameObject gemBag;
         public static event Action OnCollectGem;
-
-
+        
         private void Awake()
         {
             EnemyFieldOfView.OnCanSeePlayer += ReceiveDamage;
@@ -38,16 +38,28 @@ using UnityEngine;
                 Dash(_dashDirection);
             }
             
-            if (Input.GetKeyDown(KeyCode.E))
+            var overlap = Physics2D.OverlapCircleAll(transform.position, 3);
+            foreach (var collider in overlap)
             {
-                var overlap = Physics2D.OverlapCircleAll(transform.position, 3);
-                foreach (var collider in overlap)
+                var interactable = collider.GetComponent<Iinteractable>();
+                if (interactable != null && interactable.DisplayButton())
                 {
-                    var interactable = collider.GetComponent<Iinteractable>();
-                    if(interactable != null) interactable.Interact();
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        interactable.StartInteraction();
+                    }
+
+                    if (Input.GetKey(KeyCode.E))
+                    {
+                        interactable.Interact();
+                    }
+                    
+                    if (Input.GetKeyUp(KeyCode.E))
+                    {
+                        interactable.EndInteraction();
+                    }
                 }
             }
-
         }
         private void FixedUpdate()
         {
@@ -80,10 +92,8 @@ using UnityEngine;
             {
                 GemManager.Instance.gemCount++;
                 OnCollectGem?.Invoke();
-                other.GetComponentInChildren<ParticleSystem>().Play();
-                other.GetComponent<SpriteRenderer>().enabled = false;
-                other.GetComponent<CapsuleCollider2D>().enabled = false;
-                other.GetComponent<Light2D>().enabled = false;
+                ObjectPool.Instance.InstantiateFromPoolIndex(1, other.transform.position, Quaternion.identity, true).GetComponent<ParticleSystem>().Play();
+                other.gameObject.SetActive(false);
             }
         }
     }

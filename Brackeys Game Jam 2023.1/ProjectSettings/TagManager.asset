@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Gem
   - Lava
+  - CVcam
+  - Colors
   layers:
   - Default
   - TransparentFX

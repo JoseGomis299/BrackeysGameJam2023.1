@@ -104,6 +104,10 @@ namespace ProjectUtils.TopDown2D
             spriteRenderer.color = originalColor;
         }
 
+        public float GetHealth()
+        {
+            return health;
+        }
         protected virtual void Death()
         {
       

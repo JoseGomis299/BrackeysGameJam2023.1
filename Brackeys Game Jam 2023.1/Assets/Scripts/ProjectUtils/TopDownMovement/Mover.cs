@@ -102,7 +102,7 @@ namespace ProjectUtils.TopDown2D
                 echo.transform.localScale = new Vector3(fighterGFX.transform.localScale.x * transform.localScale.x, fighterGFX.transform.localScale.y * transform.localScale.y,fighterGFX.transform.localScale.z * transform.localScale.z);
                 var echoRenderer = echo.GetComponent<SpriteRenderer>();
                 echoRenderer.sprite = fighterGFX.GetComponent<SpriteRenderer>().sprite;
-                echoRenderer.color = new Color(fighterColor.r, fighterColor.g, fighterColor.b, 0.5f);
+                echoRenderer.color = new Color(fighterColor.r, fighterColor.g, fighterColor.b, fighterColor.a*0.5f);
             }
         }
 

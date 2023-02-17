@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8588236, g: 0.078431375, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1c93ddeb9062aa6469ff4152a07e6cfb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,7 +102,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 5
 --- !u!114 &8228236131907294725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7.5
+  movementMagnitude: 0.1
 --- !u!114 &-4232894805753739300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,14 +136,14 @@ MonoBehaviour:
   occlusionLayer: 1
   translucentLayer: 2
   translucentPresetId: 0
-  color: {r: 0.34509805, g: 0.0032423153, b: 0, a: 1}
-  size: 3
+  color: {r: 0.972549, g: 0.44313723, b: 0.45328522, a: 0.346}
+  size: 1.5
   spotAngleInner: 360
   spotAngleOuter: 360
   coreSize: 0.5
   falloff: 0
   lightStrength: 0
-  outerAngle: 38.3
+  outerAngle: 0
   lightRadius: 1
   shadowDistanceClose: 0
   shadowDistanceFar: 5

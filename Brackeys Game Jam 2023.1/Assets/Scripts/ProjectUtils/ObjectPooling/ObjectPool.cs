@@ -67,6 +67,11 @@ namespace ProjectUtils.ObjectPooling
             temp.transform.localRotation = rotation;
             return temp;
         }
+        
+        public GameObject InstantiateFromPoolIndex(int prefab, Vector3 position, Quaternion rotation, bool disappearsWithTime)
+        {
+            return InstantiateFromPool(prefabsInitialPool[prefab], position, rotation, disappearsWithTime);
+        }
 
 
         private void Update()
