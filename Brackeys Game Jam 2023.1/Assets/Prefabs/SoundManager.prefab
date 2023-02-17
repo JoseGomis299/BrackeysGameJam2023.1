@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8353383374753968370}
   - component: {fileID: 8353383374753968373}
+  - component: {fileID: 667103476}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -48,6 +49,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicSource: {fileID: 8353383375268787420}
   _effectSource: {fileID: 8353383375020488359}
+--- !u!114 &667103476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8353383374753968372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f9f83b88fbbe84c87d5e88a6ec1195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gemSound: {fileID: 8300000, guid: 243d357b0e48d3d4cad37ad611a3eac2, type: 3}
 --- !u!1 &8353383375020488358
 GameObject:
   m_ObjectHideFlags: 0

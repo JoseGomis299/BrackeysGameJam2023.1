@@ -33,7 +33,7 @@ public class Door : MonoBehaviour
 
     private void Start()
     {
-        if (GemManager.Instance == null) _goalReached = true;
+        if (GemManager.Instance == null && PlayerPrefs.GetInt(nextScene) == 0) _goalReached = true;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -66,7 +66,7 @@ public class Door : MonoBehaviour
     }
     private void OnCollectGem()
     {
-        if (!_goalReached && GemManager.Instance.gemCount >= neededGems)
+        if (this != null && !_goalReached && GemManager.Instance.gemCount >= neededGems)
         {
             _goalReached = true;
             GetComponentInChildren<ParticleSystem>().Stop();

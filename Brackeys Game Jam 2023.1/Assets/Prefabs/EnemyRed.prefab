@@ -187,6 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8075069678863960894}
   - component: {fileID: 5689858133342118551}
+  - component: {fileID: 3804315447836278295}
   m_Layer: 0
   m_Name: EnemyGFX
   m_TagString: Untagged
@@ -250,7 +251,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 207da39a24da1e54c9f3a7cefafeaee7, type: 3}
+  m_Sprite: {fileID: -123442776, guid: d245260f941d180409e79d6e862d56fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -261,6 +262,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3804315447836278295
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3626444006242841075}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4bddec24f80d71045a835d6cce7e6fff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6203080208651028400
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +393,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   gem: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: dbfcd8b69f360494ea82888627364f50, type: 3}
   radius: 2
 --- !u!70 &4136305493571970162
 CapsuleCollider2D:
@@ -477,7 +499,7 @@ MonoBehaviour:
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
-  color: {r: 0.735849, g: 0.14145909, b: 0.14145909, a: 1}
+  color: {r: 0.764151, g: 0.32712415, b: 0.32712415, a: 1}
   size: 9.5
   spotAngleInner: 360
   spotAngleOuter: 360
@@ -538,7 +560,7 @@ MonoBehaviour:
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
-  color: {r: 0.7379107, g: 0.14126332, b: 0.14126332, a: 0.648}
+  color: {r: 0.6886792, g: 0.27532464, b: 0.27532464, a: 0.648}
   size: 2
   spotAngleInner: 360
   spotAngleOuter: 360

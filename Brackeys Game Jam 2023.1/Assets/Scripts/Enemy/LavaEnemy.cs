@@ -11,6 +11,8 @@ public class LavaEnemy : MonoBehaviour, Iinteractable
     [SerializeField] private LayerMask layerMask;
     private GameObject _canvas;
     [SerializeField] private GameObject gem;
+    [SerializeField] private AudioClip deathSound;
+
     public bool throweable { get; private set; }
     [SerializeField] private float radius = 3;
     private bool _thrown;
@@ -37,8 +39,8 @@ public class LavaEnemy : MonoBehaviour, Iinteractable
         {
             _canvas.SetActive(false);
             throweable = false;
-            transform.localScale -= Vector3.one*Time.deltaTime;
-            _color.a -= Time.deltaTime;
+            transform.localScale -= Vector3.one*Time.deltaTime/3.5f;
+            _color.a -= Time.deltaTime/3.5f;
             GetComponentInChildren<SpriteRenderer>().color = _color;
             if(transform.localScale.x <= 0) gameObject.SetActive(false);
             return;
@@ -87,6 +89,7 @@ public class LavaEnemy : MonoBehaviour, Iinteractable
     }
     private void BeThrown()
     {
+        SoundManager.Instance.PlaySound(deathSound);
         if (gem != null)
         {
             gem.transform.position = transform.position;

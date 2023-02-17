@@ -14,6 +14,9 @@ using UnityEngine;
         private Vector3 _dashDirection;
 
         [SerializeField] private GameObject gemBag;
+
+        [SerializeField] private AudioClip deathSound;
+        [SerializeField] private AudioClip dashSound;
         public static event Action OnCollectGem;
         
         private void Awake()
@@ -36,6 +39,7 @@ using UnityEngine;
             {
                 _lastDashTime = Time.time;
                 Dash(_dashDirection);
+                SoundManager.Instance.PlaySound(dashSound);
             }
             
             var overlap = Physics2D.OverlapCircleAll(transform.position, 3);
@@ -75,9 +79,10 @@ using UnityEngine;
                 gemBag.transform.position = transform.position;
                 capsuleCollider.enabled = false;
                 gemBag.SetActive(true);
-                OnCollectGem?.Invoke();
+                GemsCountUI.Instance.OnCollectGem();
             }
 
+            SoundManager.Instance.PlaySound(deathSound);
             GameManager.Instance.Teleport(transform);
             Invoke(nameof(RestoreHealth), 0.7f);
         }
@@ -95,6 +100,13 @@ using UnityEngine;
                 ObjectPool.Instance.InstantiateFromPoolIndex(1, other.transform.position, Quaternion.identity, true).GetComponent<ParticleSystem>().Play();
                 other.gameObject.SetActive(false);
             }
+        }
+
+        public void OnCollectGemBag()
+        {
+            GemsCountUI.Instance.OnCollectGem();
+
+            OnCollectGem?.Invoke();
         }
     }
 

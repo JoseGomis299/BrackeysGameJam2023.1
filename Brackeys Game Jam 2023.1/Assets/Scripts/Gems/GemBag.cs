@@ -41,7 +41,7 @@ public class GemBag : MonoBehaviour
             GemManager.Instance.gemCount += gemsNumber;
             gemsNumber = 0;
             target = null;
-            GemsCountUI.Instance.OnCollectGem();
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().OnCollectGemBag();
             ObjectPool.Instance.InstantiateFromPoolIndex(1, transform.position, Quaternion.identity, true).GetComponent<ParticleSystem>().Play();
             gameObject.SetActive(false);
          }
