@@ -105,7 +105,10 @@ MonoBehaviour:
   radius: 1.75
   gemBag: {fileID: 0}
   color: 114
+  particleSound: {fileID: 8300000, guid: 16404d22cd94f6d4a95777bb43a18ce4, type: 3}
+  particleSoundCooldown: 0.075
   magnitude: 0.1
+  earthSound: {fileID: 8300000, guid: 8c74dbdcb47c8b84582d6f82299e4239, type: 3}
 --- !u!114 &8079741465116019954
 MonoBehaviour:
   m_ObjectHideFlags: 0

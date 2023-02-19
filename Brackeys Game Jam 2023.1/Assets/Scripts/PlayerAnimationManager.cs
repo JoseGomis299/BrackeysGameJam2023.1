@@ -42,7 +42,7 @@ public class PlayerAnimationManager : MonoBehaviour
             _animator.SetBool("Walking", false);
         }
 
-        if (_playerController.state == Mover.MovementState.onIce)
+        if (_playerController.state == Mover.MovementState.onIce && _playerController.moving)
         {
             if (Time.time - _lastIceTime > iceSoundCoolDown)
             {

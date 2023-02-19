@@ -23,6 +23,7 @@ namespace ProjectUtils.TopDown2D
         protected float lastDashTime;
         private Rigidbody2D _rb;
         private IceMovement _iceMovement;
+        public bool moving { get; private set; }
 
 
         [Header("States")]
@@ -81,6 +82,7 @@ namespace ProjectUtils.TopDown2D
             
             //Move position
             _rb.MovePosition(transform.position + _moveDelta * Time.fixedDeltaTime);
+            moving = _moveDelta != Vector3.zero;
         }
         protected void Dash(Vector3 direction)
         {

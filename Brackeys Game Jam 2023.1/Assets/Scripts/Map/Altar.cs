@@ -29,6 +29,7 @@ public class Altar : MonoBehaviour, Iinteractable
 
    private CinemachineBasicMultiChannelPerlin noise;
    private CinemachineVirtualCamera cam;
+   [SerializeField] private AudioClip earthSound;
 
    public static event Action<char> OnAltarGot;
 
@@ -55,6 +56,8 @@ public class Altar : MonoBehaviour, Iinteractable
       gemBag.GetComponent<SineMovement>().initialPos =ballPos.position;
       gemBag.gameObject.SetActive(true);
       _lastTimePressed = Time.time;
+      SoundManager.Instance.PlaySound(earthSound);
+
    }
    public void Interact()
    {
@@ -77,6 +80,7 @@ public class Altar : MonoBehaviour, Iinteractable
    public void EndInteraction()
    {
       Noise(0,0);
+      SoundManager.Instance.StopEffect();
    }
 
    private IEnumerator PlaySounds()
