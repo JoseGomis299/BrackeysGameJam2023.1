@@ -15,7 +15,7 @@ namespace ProjectUtils.TopDown2D
         private Vector3 _moveDelta;
         private RaycastHit2D _hit;
         [SerializeField] public bool canDash = true;
-        private bool _canDash = true;
+        protected bool _canDash = true;
         [SerializeField] private float dashForce = 35;
         [SerializeField] private float dashDuration= 0.5f;
         private Vector3 _dashDirection;
@@ -23,7 +23,6 @@ namespace ProjectUtils.TopDown2D
         protected float lastDashTime;
         private Rigidbody2D _rb;
         private IceMovement _iceMovement;
-        
 
 
         [Header("States")]

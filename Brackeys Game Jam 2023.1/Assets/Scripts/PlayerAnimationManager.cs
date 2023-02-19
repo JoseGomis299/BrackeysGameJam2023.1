@@ -10,8 +10,13 @@ public class PlayerAnimationManager : MonoBehaviour
     private Animator _animator;
 
     [SerializeField] private AudioClip walkSound;
+    [SerializeField] private AudioClip wheatSound;
+    [SerializeField] private AudioClip iceSound;
     [SerializeField] private float walkSoundCoolDown;
     private float _lastWalkTime;
+    [SerializeField] private float iceSoundCoolDown;
+    private float _lastIceTime;
+
 
     void Start()
     {
@@ -29,11 +34,22 @@ public class PlayerAnimationManager : MonoBehaviour
             {
                 _lastWalkTime = Time.time;
                 SoundManager.Instance.PlaySound(walkSound);
+                if(_playerController.inWheat) SoundManager.Instance.PlaySound(wheatSound);
             }
         }
         else
         {
             _animator.SetBool("Walking", false);
+        }
+
+        if (_playerController.state == Mover.MovementState.onIce)
+        {
+            if (Time.time - _lastIceTime > iceSoundCoolDown)
+            {
+                _lastIceTime = Time.time;
+                SoundManager.Instance.PlaySound(iceSound);
+            }
+
         }
     }
 }

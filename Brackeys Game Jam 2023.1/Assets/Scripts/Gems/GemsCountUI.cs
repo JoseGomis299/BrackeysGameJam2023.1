@@ -10,12 +10,20 @@ public class GemsCountUI : MonoBehaviour
     public static GemsCountUI Instance;
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null && Instance != this)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         PlayerController.OnCollectGem += OnCollectGem;
     }
 
     public void OnCollectGem()
     {
+        if(this == null) return;
         for (int i = 0; i < 6; i++)
         {
             if (i < GemManager.Instance.gemCount)

@@ -47,11 +47,10 @@ namespace ProjectUtils.TopDown2D
         
         public virtual void ReceiveDamage(Damage dmg)
         {
-            if (Time.time - lastImmune > immuneTime)
+            if (this != null && Time.time - lastImmune > immuneTime)
             {
                 lastImmune = Time.time;
                 health -= dmg.damageAmount;
-                pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
                 fighterGFXRenderer.color = new Color(fighterColor.r, fighterColor.g, fighterColor.b, health / maxHealth);
                 if (transform.CompareTag("Player") && _playerLight.color.a > 0.15f) _playerLight.color.a = _playerLightAlpha * (health / maxHealth);
 

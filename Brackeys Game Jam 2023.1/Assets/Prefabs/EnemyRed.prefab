@@ -394,7 +394,7 @@ MonoBehaviour:
     m_Bits: 256
   gem: {fileID: 0}
   deathSound: {fileID: 8300000, guid: dbfcd8b69f360494ea82888627364f50, type: 3}
-  radius: 2
+  radius: 1.8
 --- !u!70 &4136305493571970162
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -408,7 +408,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.20181218}
   m_Size: {x: 0.7, y: 0.7}
   m_Direction: 0
 --- !u!50 &2668076172607956898

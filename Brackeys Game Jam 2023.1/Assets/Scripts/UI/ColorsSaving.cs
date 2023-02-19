@@ -12,7 +12,13 @@ public class ColorsSaving : MonoBehaviour
 
     private bool _r;
     private bool _y;
+
     private void Awake()
+    {
+        ChangeColor();
+    }
+
+    public void ChangeColor()
     {
         _blue = transform.GetChild(2).GetComponent<Image>();
         _red = transform.GetChild(0).GetComponent<Image>();
@@ -20,31 +26,66 @@ public class ColorsSaving : MonoBehaviour
         
         if (IntToBool(PlayerPrefs.GetInt("Blue", 0)))
         {
-            _blue.gameObject.GetComponent<Animator>().enabled = false;
+            var animator =  _blue.gameObject.GetComponent<Animator>();
+            if(animator != null) animator.enabled = false;
             var col = _blue.color;
             col.r = 0;
             col.g = 0;
-            col.b = 255;
+            col.b = 1;
             _blue.color = col;
         }
+        else
+        {
+            var animator =  _blue.gameObject.GetComponent<Animator>();
+            if(animator != null) animator.enabled = true;
+            var col = _blue.color;
+            col.r = 1f/255*60;
+            col.g = 1f/255*60;
+            col.b = 1f/255*60;
+            _blue.color = col;
+        }
+        
+        
         if (IntToBool(PlayerPrefs.GetInt("Red", 0)))
         {
-            _red.gameObject.GetComponent<Animator>().enabled = false;
+            var animator =  _red.gameObject.GetComponent<Animator>();
+            if(animator != null) animator.enabled = false;
             var col = _red.color;
             col.r = 1;
             col.g = 0;
             col.b = 0;
-            Debug.Log(col);
-
             _red.color = col;
         }
+        else
+        {
+            var animator =  _red.gameObject.GetComponent<Animator>();
+            if(animator != null) animator.enabled = true;
+            var col = _red.color;
+            col.r = 1f/255*90;
+            col.g = 1f/255*90;;
+            col.b = 1f/255*90;;
+            _red.color = col;
+        }
+        
+        
         if (IntToBool(PlayerPrefs.GetInt("Yellow", 0)))
         {
-            _yellow.gameObject.GetComponent<Animator>().enabled = false;
+            var animator =  _yellow.gameObject.GetComponent<Animator>();
+            if(animator != null) animator.enabled = false;
             var col = _yellow.color;
-            col.r = 255;
-            col.g = 255;
+            col.r = 1;
+            col.g = 1;
             col.b = 0;
+            _yellow.color = col;
+        }
+        else
+        {
+            var animator =  _yellow.gameObject.GetComponent<Animator>();
+            if(animator != null) animator.enabled = true;
+            var col = _yellow.color;
+            col.r = 1f/255*120;
+            col.g = 1f/255*120;
+            col.b = 1f/255*120;
             _yellow.color = col;
         }
     }

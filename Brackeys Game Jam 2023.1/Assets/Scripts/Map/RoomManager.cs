@@ -31,6 +31,8 @@ public class RoomManager : MonoBehaviour
 
    private void ChangeRoom(int room, int nextRoom)
    {
+      if (this == null) return;
+      
       for (int i = 0; i < objectsRange[room]; i++) 
       {
             _roomObjects[room, i].SetActive(false);

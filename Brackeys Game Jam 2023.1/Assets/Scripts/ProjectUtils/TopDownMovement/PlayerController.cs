@@ -4,7 +4,9 @@ using ProjectUtils.Attacking;
 using ProjectUtils.ObjectPooling;
 using ProjectUtils.TopDown2D;
 using UnityEngine;
-    public class PlayerController : Mover
+using UnityEngine.SceneManagement;
+
+public class PlayerController : Mover
     {
         public Vector3 direction { get; private set; }
         private Vector3 _lastValidDirection;
@@ -17,6 +19,8 @@ using UnityEngine;
 
         [SerializeField] private AudioClip deathSound;
         [SerializeField] private AudioClip dashSound;
+        
+        public bool inWheat { get; private set; }
         public static event Action OnCollectGem;
         
         private void Awake()
@@ -35,18 +39,24 @@ using UnityEngine;
             if (direction.magnitude is <= 1 and > 0) _dashDirection = direction;
 
 
-            if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time - _lastDashTime >= dashCoolDown)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time - _lastDashTime >= dashCoolDown && _canDash)
             {
                 _lastDashTime = Time.time;
-                Dash(_dashDirection);
+                Dash(SceneManager.GetActiveScene().name == "Blue" ? _dashDirection : _lastValidDirection);
                 SoundManager.Instance.PlaySound(dashSound);
             }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if(GameManager.Instance.paused) GameManager.Instance.ResumeGame();
+                else GameManager.Instance.PauseGame();
+            }
             
-            var overlap = Physics2D.OverlapCircleAll(transform.position, 3);
+            var overlap = Physics2D.OverlapCircleAll(transform.position, 10);
             foreach (var collider in overlap)
             {
                 var interactable = collider.GetComponent<Iinteractable>();
-                if (interactable != null && interactable.DisplayButton())
+                if (interactable != null && capsuleCollider.enabled && interactable.DisplayButton())
                 {
                     if (Input.GetKeyDown(KeyCode.E))
                     {
@@ -77,11 +87,11 @@ using UnityEngine;
                 gemBag.GetComponent<GemBag>().SetGems(GemManager.Instance.gemCount);
                 GemManager.Instance.gemCount = 0;
                 gemBag.transform.position = transform.position;
-                capsuleCollider.enabled = false;
                 gemBag.SetActive(true);
                 GemsCountUI.Instance.OnCollectGem();
             }
 
+            capsuleCollider.enabled = false;
             SoundManager.Instance.PlaySound(deathSound);
             GameManager.Instance.Teleport(transform);
             Invoke(nameof(RestoreHealth), 0.7f);
@@ -100,6 +110,18 @@ using UnityEngine;
                 ObjectPool.Instance.InstantiateFromPoolIndex(1, other.transform.position, Quaternion.identity, true).GetComponent<ParticleSystem>().Play();
                 other.gameObject.SetActive(false);
             }
+            else if (other.CompareTag("Wheat"))
+            {
+                inWheat = true;
+            }
+        }
+
+        protected void OnTriggerExit2D(Collider2D other)
+        { 
+            if (other.CompareTag("Wheat"))
+            {
+                inWheat = false;
+            }       
         }
 
         public void OnCollectGemBag()

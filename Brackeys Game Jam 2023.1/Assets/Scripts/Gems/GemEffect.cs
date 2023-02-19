@@ -26,6 +26,7 @@ public class GemEffect : MonoBehaviour
 
   private void OnGemEffect(char color)
    {
+      if(_particleSystem == null) return;
       switch (color)
       {
          case 'b':  _particleSystem.startColor = Color.blue;

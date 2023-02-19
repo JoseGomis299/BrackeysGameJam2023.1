@@ -8,10 +8,13 @@ public class GemBag : MonoBehaviour
 {
    private Transform target;
    [SerializeField] private float speed;
-   [SerializeField] private float movementMagnitude;
-   private Vector3 initialPos;
+   
    private float _speed;
    private int gemsNumber;
+
+   private SineMovement _sineMovement;
+
+   public bool DontGo;
 
    public void SetGems(int gemsNumber)
    {
@@ -25,12 +28,13 @@ public class GemBag : MonoBehaviour
 
    private void OnEnable()
    {
-      initialPos = transform.position;
+      _sineMovement = GetComponent<SineMovement>();
+      _sineMovement.initialPos = transform.position;
    }
 
    private void FixedUpdate()
    {
-      if (target != null)
+      if (target != null && !DontGo)
       {
          _speed = Mathf.Lerp(_speed, speed, Time.fixedDeltaTime * 5f);
          var direction = (target.position - transform.position).normalized;
@@ -48,7 +52,7 @@ public class GemBag : MonoBehaviour
       }
       else
       {
-         transform.position = (new Vector3(initialPos.x, initialPos.y+ Mathf.Sin(Time.time) * movementMagnitude, initialPos.z));
+         _sineMovement.Move();
       }
    }
 

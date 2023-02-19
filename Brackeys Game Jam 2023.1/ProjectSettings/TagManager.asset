@@ -10,6 +10,8 @@ TagManager:
   - Lava
   - CVcam
   - Colors
+  - GemBag
+  - Wheat
   layers:
   - Default
   - TransparentFX

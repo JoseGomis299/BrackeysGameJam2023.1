@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource _musicSource, _effectSource;
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance == null && Instance != this)
         {
             Instance = this;
            // DontDestroyOnLoad(gameObject);
@@ -26,6 +26,12 @@ public class SoundManager : MonoBehaviour
         _effectSource.PlayOneShot(clip);
     }
 
+    public void ChangeMusic(AudioClip clip)
+    {
+        _musicSource.clip = clip;
+        _musicSource.Play();
+    }
+
     public void ChangeMasterVolume(float value)
     {
         AudioListener.volume = value;
@@ -39,5 +45,25 @@ public class SoundManager : MonoBehaviour
     public void ChangeEffectsVolume(float value)
     {
         _effectSource.volume = value;
+    }
+
+    public void StopMusic()
+    {
+        _musicSource.Pause();
+    }
+    
+    public void StopEffect()
+    {
+        _effectSource.Stop();
+    }
+    
+    public void ResumeMusic()
+    {
+        _musicSource.Play();
+    }
+
+    public bool EffectsIsPlaying()
+    {
+        return _effectSource.isPlaying;
     }
 }
