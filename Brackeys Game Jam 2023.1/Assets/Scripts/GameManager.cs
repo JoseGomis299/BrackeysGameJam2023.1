@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator _Teleport(Transform teleportedTransform)
     {
         yield return new WaitForSeconds(0.6f);
+        teleportedTransform.GetComponent<PlayerController>()?.MakeImmune();
         teleportedTransform.position = _currentCheckPoint.position;
         transition.SetBool("ChangeScene", false);
     }

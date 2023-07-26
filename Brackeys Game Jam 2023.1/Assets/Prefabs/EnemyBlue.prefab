@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 6
-  extraRadius: 9.5
+  extraRadius: 7
   angle: 50
   targetLayer:
     serializedVersion: 2

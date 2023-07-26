@@ -35,6 +35,8 @@ namespace ProjectUtils.TopDown2D
             fighterGFXRenderer = fighterGFX.GetComponent<SpriteRenderer>();
             fighterColor = fighterGFXRenderer.color;
 
+            lastImmune = float.MinValue;
+
             if (transform.CompareTag("Player"))
             {
                 _playerLight = transform.GetChild(1).GetComponent<Light2D>();
@@ -49,7 +51,6 @@ namespace ProjectUtils.TopDown2D
         {
             if (this != null && Time.time - lastImmune > immuneTime)
             {
-                lastImmune = Time.time;
                 health -= dmg.damageAmount;
                 fighterGFXRenderer.color = new Color(fighterColor.r, fighterColor.g, fighterColor.b, health / maxHealth);
                 if (transform.CompareTag("Player") && _playerLight.color.a > 0.15f) _playerLight.color.a = _playerLightAlpha * (health / maxHealth);
@@ -60,7 +61,6 @@ namespace ProjectUtils.TopDown2D
                     Death();
                 }
 
-                //StartCoroutine(ImmuneDisplay());
             }
         }
 
@@ -77,30 +77,28 @@ namespace ProjectUtils.TopDown2D
             if (health < maxHealth && Time.time - lastImmune >= _recoveringStartTime && health > 0)
             {
                 if (health + healthRecovery > maxHealth) health = maxHealth;
-                else health = health + healthRecovery;
+                else health += healthRecovery;
                 fighterGFXRenderer.color = new Color(fighterColor.r, fighterColor.g, fighterColor.b, health / maxHealth);
                 if(transform.CompareTag("Player")) _playerLight.color.a = _playerLightAlpha * (health / maxHealth);
 
             }
         }
 
-        private IEnumerator ImmuneDisplay()
+        protected IEnumerator ImmuneDisplay()
         {
             float elapsedTime = 0;
-            var spriteRenderer = fighterGFX.GetComponent<SpriteRenderer>();
-            Color originalColor = spriteRenderer.color;
-
+            WaitForSeconds waitForSeconds = new WaitForSeconds(immuneTime / 10f);
+            
             while (elapsedTime < immuneTime)
             {
-                spriteRenderer.color = new Color(255, 255, 255, 0);
-                yield return new WaitForSeconds(immuneTime / 10);
-                spriteRenderer.color = originalColor;
-                yield return new WaitForSeconds(immuneTime / 10);
-                elapsedTime += immuneTime / 5;
-
+                fighterGFXRenderer.color = new Color(1, 1, 1, 0);
+                elapsedTime += immuneTime / 5f;
+                yield return waitForSeconds;
+                fighterGFXRenderer.color = new Color(1, 1, 1, health / maxHealth);
+                yield return waitForSeconds;
             }
 
-            spriteRenderer.color = originalColor;
+            fighterGFXRenderer.color = new Color(1, 1, 1, health / maxHealth);
         }
 
         public float GetHealth()

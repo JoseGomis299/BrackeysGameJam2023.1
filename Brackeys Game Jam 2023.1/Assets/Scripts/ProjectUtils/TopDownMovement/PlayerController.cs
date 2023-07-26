@@ -130,5 +130,11 @@ public class PlayerController : Mover
 
             OnCollectGem?.Invoke();
         }
+
+        public void MakeImmune()
+        {
+            lastImmune = Time.time;
+            StartCoroutine(ImmuneDisplay());
+        }
     }
 
